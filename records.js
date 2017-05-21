@@ -25,17 +25,18 @@ var collection = {
     }
 };
 function update(id, prop, value) {
-  var rec = collection[id]
-  if (value) {
-    if (prop !== "tracks") {
-      rec[prop] = value
-    } else {
-      rec[prop].push(value)
+    var rec = collection[id]
+    if (value !== "") {
+        if (prop !== "tracks") {
+            rec[prop] = value
+        } else {
+            rec[prop].push(value)
+        }
+    } else if (prop !== "") {
+        var prop = rec[prop]
     }
-  } else {
-    delete rec[prop]
-  }
   return collection;
 }
-console.log(update(5439, "artist", "ABBA")[5439].artist) // ABBA
-console.log(update(1245, "tracks", "Addicted to Love")[1245].tracks[0]) // Addicted to Love
+console.log(update(5439, "artist", "ABBA")) // ABBA
+console.log(update(1245, "tracks", "Addicted to Love")) // Addicted to Love
+console.log(update(2548, "artist"))
